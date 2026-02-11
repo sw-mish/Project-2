@@ -770,7 +770,7 @@ position: relative;
 }
 
 @media (max-width: 768px) {
-  .hero-text h1 {
+  .home-text h1 {
     font-size: 3rem;
   }
   .nav-links {
@@ -808,10 +808,10 @@ position: relative;
   .nav-links {
     gap: 1.5rem;
   }
-  .hero {
+  .home {
     padding: 4rem 5%;
   }
-  .hero-text h1 {
+  .home-text h1 {
     font-size: 3.5rem;
   }
 }
@@ -853,22 +853,22 @@ position: relative;
     transform: rotate(-45deg) translate(7px, -6px);
   }
 
-  .hero {
+  .home {
     flex-direction: column;
     text-align: center;
     padding: 5rem 5%;
   }
 
-  .hero-text {
+  .home-text {
     max-width: 100%;
   }
 
-  .hero-image {
+  .home-image {
     max-width: 80%;
     margin-top: 3rem;
   }
 
-  .hero-text h1 {
+  .home-text h1 {
     font-size: 3rem;
   }
 
@@ -946,7 +946,7 @@ position: relative;
     font-style: italic;
   color: var(--subtle-text);
   margin-bottom: 1.5rem;}
-  
+
 .contact-container {
     max-width: 800px;
     margin: 0 auto;
