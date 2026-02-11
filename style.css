@@ -1,10 +1,10 @@
 /* @import url("ttps://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap"); */
 :root {
   /* Dark Theme (Default) */
-  --bg-color: #576A8f;
+  --bg-color: #5c87dd;
   --text-color: #FFF8DE;
   --accent-color: #FF7444;
-  --card-bg: #49597a; /* Slightly lighter than bg for depth */
+  --card-bg: #0e337d; /* Slightly lighter than bg for depth */
   --btn-bg: #B7BDF7;
   --btn-text: #1A1A1A;
   --border-color: rgba(183, 189, 247, 0.3);
@@ -169,8 +169,8 @@ The Logic: pointer-events: none ensures you can still click buttons "through" th
     line-height:1.1;
     background: linear-gradient(
     135deg, 
-    #f6edca 20%,  /* Cream - keeps it readable */
-    #B7BDF7 50%,  /* Periwinkle - smooth transition */
+      /* Cream - keeps it readable */
+    #131e88 20%,  /* Periwinkle - smooth transition */
     #FF7444 90%   /* Coral - the pop of color at the end */
 );
     -webkit-background-clip:text; /*cuts bgd in shape of letter*/
@@ -594,7 +594,7 @@ position: relative;
 }
 
 .service-card:hover h3 {
-  background: linear-gradient(135deg, #B7BDF7, #FF7444);
+  background: linear-gradient(135deg, #667eea 0%, #f093fb 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
