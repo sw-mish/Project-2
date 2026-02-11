@@ -196,6 +196,26 @@ The Logic: pointer-events: none ensures you can still click buttons "through" th
     animation:fadeInUp 0.7s ease-out 0.3s both;
 }
 
+.typed-text {
+  background: linear-gradient(135deg, #ece0df 0%, #f5576c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  display: inline-block;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
 .btn-primary{
     display: inline-block;
     padding: 1rem 2.5rem;
@@ -206,11 +226,28 @@ The Logic: pointer-events: none ensures you can still click buttons "through" th
     #FF7444 90%   /* Coral - the pop of color at the end */
 );
 color:white;
-text-decoration:none;
-border-radius:5px;
-border:none;
-font-weight:bolder;
-font-size:1.5rem;
+border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--btn-bg) 0%, var(--bg-color) 100%);
+  transition: left 0.4s ease;
+  z-index: -1;
 }
 
 .btn-primary:hover{
@@ -218,12 +255,28 @@ font-size:1.5rem;
     box-shadow: 0 15px 40px rgba(102,126,234,0.5);
 }
 
+.btn-primary:hover::before {
+  left: 0;
+}
 .social-links{
     
     margin:2rem 0;
     gap:20px;
     display:flex;
     animation:fadeInUp 0.7s ease-out 0.5s both;
+}
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .social-links a:hover{
@@ -239,6 +292,11 @@ font-size:1.5rem;
     height:28px;
     transform: transform 0.3s ease;
 }
+
+.social-links a:hover img {
+  transform: scale(1.1);
+}
+
 .main-image{
     max-width:30%;
     position:relative;
@@ -257,11 +315,44 @@ font-size:1.5rem;
     }
 }
 
+.main-image::before{
+    content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: linear-gradient(135deg, var(--btn-bg) 0%, var(--bg-color) 100%);
+  border-radius: 30px;
+  opacity: 0.3;
+  filter: blur(40px);
+  z-index: -1;
+  animation: imageGlow 3s ease-in-out infinite;
+}
+
+@keyframes imageGlow {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
 .main-image img{
     width:100%;
     height:auto;
     border-radius:20px;
     box-shadow:0 20px 60px rgba(0,0,0,0.3);
+     border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.5s ease;
+}
+
+.main-image:hover img {
+  transform: scale(1.02) rotate(1deg);
+  box-shadow: 0 25px 70px rgba(102, 126, 234, 0.4);
 }
 
 .work, .services, .testimonials{
