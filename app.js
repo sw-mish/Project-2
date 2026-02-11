@@ -48,3 +48,20 @@ document.addEventListener("DOMContentLoaded", function () {
   // On DOM Load initiate the effect
   if (textArray.length) setTimeout(type, newTextDelay + 250);
 });
+
+const hamburger = document.querySelector(".hamburger");
+const navLinks = document.querySelector(".nav-links");
+
+hamburger.addEventListener("click", () => {
+    // Toggle the 'active' class on both elements
+    hamburger.classList.toggle("active");
+    navLinks.classList.toggle("active");
+});
+
+// Optional: Close menu when a link is clicked
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        navLinks.classList.remove("active");
+    });
+});
