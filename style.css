@@ -1,4 +1,4 @@
-@import url("ttps://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap");
+/* @import url("ttps://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap"); */
 :root {
   /* Dark Theme (Default) */
   --bg-color: #576A8f;
@@ -9,6 +9,8 @@
   --btn-text: #1A1A1A;
   --border-color: rgba(183, 189, 247, 0.3);
   --subtle-text: #B7BDF7;
+  --font-heading:'Cascadia Code', sans-serif;
+  --font-body:'Roboto Serif', sans-serif;
 }
 
 .light-theme{
@@ -32,12 +34,14 @@ html{
 }
 
 body{
-    font-family:'Alumni Sans Pinstripe', sans-serif;
+    font-family:var(--font-body);
     background:var(--bg-color);
     color:var(--text-color);
     transition: background 0.3s ease, color 0.3s ease;
 }
-
+h1,h2,h3,h4{
+    font-family: var(--font-heading);
+}
 .navbar{
     display:flex;
     justify-content: space-between;
@@ -48,7 +52,7 @@ body{
     top:0;
     z-index:1000;
     width:100%;
-    border-bottom:1px solid var(--border-color)
+    border-bottom:1px solid var(--border-color);
 }
 
 .logo{
@@ -56,7 +60,7 @@ body{
     font-weight:800;
     color:var(--accent-color);
     text-decoration:none;
-
+    font-family:var(--font-heading);
 }
 
 .nav-links {
@@ -97,4 +101,378 @@ body{
     background:var(--accent-color);
     color:var(--btn-text);
     border-color:var(--accent-color);
+}
+
+/* home section */
+.home{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    min-height:100vh;
+    padding: 0 10%;
+    gap:4rem;
+    position:relative;
+    overflow:hidden;
+}
+
+/* animation code */
+/* .home::before): It uses a pseudo-element to create a layer that is 200% the size of your container. By making it twice as large and positioning it at top: -50% and left: -50%, it ensures that when the layer rotates, the corners never reveal the empty background beneath.
+
+The Gradients: It uses two radial-gradient "blobs."
+One sits on the left (30% 50%).
+One sits on the right (70% 50%).
+
+The Animation: The rotateGradient keyframe spins this entire giant layer 360 degrees every 20 seconds. Because the gradients are offset from the center, they appear to orbit each other slowly.
+
+The Logic: pointer-events: none ensures you can still click buttons "through" the animation, and z-index: 0 keeps it in the background. */
+.home::before{ 
+    content:"";
+    position:absolute;
+    top:-50%;
+    left: -50%;
+    width:200%;
+    height:200%;
+    background:
+    radial-gradient(circle at 30% 50%, rgba(183,189,247,0.2) 0%, transparent 50%), radial-gradient(circle at 70% 50%, rgba(255,116,68,0.15) 0%, transparent 50%);
+    animation: rotateGradient 25s linear infinite;
+    pointer-events:none;
+    z-index:0;
+}
+
+@keyframes rotateGradient{
+    0% {transform: rotate(0deg);}
+    100% {transform:rotate(360deg);}
+}
+
+.home-text{
+    position:relative;
+    max-width:50%;
+    z-index:1;
+    animation:fadeInUp 0.7s ease-out;
+}
+
+@keyframes fadeInUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+.home-text h1{
+    font-size:5rem;
+    letter-spacing: -8px;
+    font-weight:bolder;
+    margin-bottom:1.5rem;
+    line-height:1.1;
+    background: linear-gradient(
+    135deg, 
+    #f6edca 20%,  /* Cream - keeps it readable */
+    #B7BDF7 50%,  /* Periwinkle - smooth transition */
+    #FF7444 90%   /* Coral - the pop of color at the end */
+);
+    -webkit-background-clip:text; /*cuts bgd in shape of letter*/
+    -webkit-text-fill-color:transparent; /*og solid color of txt disappers so bgd shows*/
+    background-clip:text;
+    animation:
+    fadeInUp 0.8s ease-out 0.2s both,
+    textGlow 3s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+    /* Using your Periwinkle (#B7BDF7) for the glow */
+    0%, 100% { filter: drop-shadow(0 0 8px rgba(183, 189, 247, 0.3)); }
+    50% { filter: drop-shadow(0 0 15px rgba(183, 189, 247, 0.6)); }
+}
+
+.home-text p{
+    font-size:1.8rem;
+    margin-bottom:2.5rem;
+    color:var(--subtle-text);
+    font-weight:bold;
+    line-height: 1.5;
+    animation:fadeInUp 0.7s ease-out 0.3s both;
+}
+
+.btn-primary{
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(
+    135deg, 
+    #f6c1af 20%,  /* Cream - keeps it readable */
+   #f79878 50% , /* Periwinkle - smooth transition */
+    #FF7444 90%   /* Coral - the pop of color at the end */
+);
+color:white;
+text-decoration:none;
+border-radius:5px;
+border:none;
+font-weight:bolder;
+font-size:1.5rem;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow: 0 15px 40px rgba(102,126,234,0.5);
+}
+
+.social-links{
+    
+    margin:2rem 0;
+    gap:20px;
+    display:flex;
+    animation:fadeInUp 0.7s ease-out 0.5s both;
+}
+
+.social-links a:hover{
+    background: var(--btn-bg);
+    transform:translateY(-5px) scale(1.05);
+    border-color:transparent;
+    border-radius:5px;
+    box-shadow: 0 10px 30px rgba(102,126,234,0.4)
+}
+
+.social-links a img{
+    width: 28px;
+    height:28px;
+    transform: transform 0.3s ease;
+}
+.main-image{
+    max-width:30%;
+    position:relative;
+    z-index:1;
+    animation:fadeInRight 0.7s ease-out 0.3s both;
+}
+
+@keyframes fadeInRight{
+    from{
+        opacity:0;
+        transform:translateX(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+.main-image img{
+    width:100%;
+    height:auto;
+    border-radius:20px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+
+.work, .services, .testimonials{
+    padding: 6rem 6%;
+    text-align:center;
+    position:relative;
+}
+
+.work h2,
+.services h2,
+.testimonials h2 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 4rem;
+  background: linear-gradient(135deg, var(--text-color) 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1px;
+  position: relative;
+  display: inline-block;
+}
+
+.work h2::after,
+.services h2::after,
+.testimonials h2::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(135deg, var(--text-color) 0%, var(--accent-color) 100%);
+  border-radius: 2px;
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+}
+
+.work-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr); /*2 cols, in each col 1 item*/
+    gap:2.5rem;
+    margin-top:2rem;
+}
+
+.work-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  height: 400px;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+/* Gradient Border Effect */
+.work-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.work-card:hover::before {
+  opacity: 1;
+}
+
+.work-card:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 20px 60px rgba(102, 126, 234, 0.3),
+    0 0 0 1px rgba(102, 126, 234, 0.1);
+}
+
+.work-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 0.4s ease;
+}
+
+.work-card:hover img {
+  transform: scale(1.1);
+  filter: brightness(0.7);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 1, 24, 0.95) 0%,
+    rgba(102, 126, 234, 0.3) 50%,
+    transparent 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.5rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.work-card:hover .overlay {
+  opacity: 1;
+}
+
+.overlay h3 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  transform: translateY(20px);
+  transition: transform 0.4s ease 0.1s;
+}
+
+.work-card:hover .overlay h3 {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Work Card Buttons */
+.buttons {
+  display: flex;
+  gap: 1rem;
+  transform: translateY(20px);
+  transition: transform 0.4s ease 0.2s;
+}
+
+.work-card:hover .buttons {
+  transform: translateY(0);
+}
+
+.btn,
+.btn-outline {
+  padding: 0.75rem 1.75rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn {
+  background: linear-gradient(135deg, var(--text-color) 0%, var(--accent-color) 100%);
+  color: white;
+  border: none;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--btn-bg) 0%, var(--bg-color) 100%);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
+}
+
+.btn:hover::before {
+  left: 0;
+}
+
+.btn-outline {
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
 }
