@@ -1,0 +1,100 @@
+@import url("ttps://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap");
+:root {
+  /* Dark Theme (Default) */
+  --bg-color: #576A8f;
+  --text-color: #FFF8DE;
+  --accent-color: #FF7444;
+  --card-bg: #49597a; /* Slightly lighter than bg for depth */
+  --btn-bg: #B7BDF7;
+  --btn-text: #1A1A1A;
+  --border-color: rgba(183, 189, 247, 0.3);
+  --subtle-text: #B7BDF7;
+}
+
+.light-theme{
+  /* Light Theme */
+  --bg-color: #FFF8DE;
+  --text-color: #576A8F;
+  --accent-color: #FF7444;
+  --card-bg: #ffffff;
+  --border-color: rgba(87, 106, 143, 0.2);
+  --subtle-text: #717C94;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Alumni Sans Pinstripe', sans-serif;
+    background:var(--bg-color);
+    color:var(--text-color);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.navbar{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    padding:1rem 5%;
+    background:var(--card-bg);
+    position:sticky;
+    top:0;
+    z-index:1000;
+    width:100%;
+    border-bottom:1px solid var(--border-color)
+}
+
+.logo{
+    font-size: 1.5rem;
+    font-weight:800;
+    color:var(--accent-color);
+    text-decoration:none;
+
+}
+
+.nav-links {
+    display:flex;
+    gap:20px;
+    justify-content:space-between;
+    list-style:none;
+
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:var(--text-color);
+    font-weight: 500px;
+    position:relative; /* why position relative? - to make any movement changes according to web page*/
+    transition:color 0.3s ease;
+    font-size:1.2rem;
+
+}
+
+.nav-links a:hover{
+    
+    color:var(--accent-color);
+    transition: color 0.3s ease;
+
+}
+
+.theme-toggle{
+    background:transparent;
+    border: 1px solid var(--border-color);
+    padding: 5px 5px;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:1.2rem;
+}
+
+.theme-toggle:hover{
+    background:var(--accent-color);
+    color:var(--btn-text);
+    border-color:var(--accent-color);
+}
