@@ -12,7 +12,7 @@ toggleBtn.addEventListener("click", ()=>{
 
 //array typing custom function.....
 const typedTextSpan = document.querySelector(".typed-text");
-const textArray = ["a Software Engineer","a Team Lead"];
+const textArray = ["a Software Engineer","a Team Lead","a Yogi","a Runner","an Active Learner", "a Problem Solver"];
 const typingDelay = 100;
 const erasingDelay = 50;
 const newTextDelay = 2000; // Delay between current and next text
